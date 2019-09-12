@@ -4,3 +4,7 @@ export { default as FacebookIcon } from './facebook.png';
 export { default as TwitterIcon } from './twitter.png';
 export { default as DoubleTickIcon } from './doubleTick.png';
 export { default as SearchIcon } from './searchIcon.png';
+export { default as ThumbsUpIcon } from './thumbs-up.png';
+export { default as ThumbsUpFilledIcon } from './thumbs-up-filled.png';
+export { default as ThumbsDownIcon } from './thumbs-down.png';
+export { default as ThumbsDownFilledIcon } from './thumbs-down-filled.png';

@@ -7,6 +7,7 @@ import {
   Input, Form, Button, SocialLogin
 } from '../common';
 import './login.scss';
+import { GoogleIcon, FacebookIcon, TwitterIcon } from '../../../assets/icons';
 
 /**
  *
@@ -23,16 +24,16 @@ export class Login extends Component {
     errors: {
       userLogin: '',
       password: '',
-      server: ''
-    }
+      server: '',
+    },
   };
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-  }
+  };
 
-  handleFocus =() => {
+  handleFocus = () => {
     this.setState({ errors: { userLogin: '', password: '', server: '' } });
   }
 
@@ -46,7 +47,13 @@ export class Login extends Component {
        await this.props.login(userLogin, password);
        const { error, history: { push } } = this.props;
        this.setState({ errors: { server: error } });
-       if (!error) push('/');
+       if (!error) {
+         if (this.props.location.state) {
+           push(this.props.location.state.referrer);
+         } else {
+           push('/home');
+         }
+       }
      }
    }
 
@@ -138,6 +145,9 @@ Login.propTypes = {
 
 export const mapState = (state) => state.loginReducer;
 const actionCreators = {
-  login
+  login,
 };
-export default connect(mapState, actionCreators)(Login);
+export default connect(
+  mapState,
+  actionCreators
+)(Login);

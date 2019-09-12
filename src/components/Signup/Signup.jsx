@@ -64,7 +64,16 @@ export class Signup extends Component {
   };
 
   redirectUserToProfilePage = () => {
-    window.location = '/profile';
+    const {
+      location: { state },
+      history: { push },
+    } = this.props;
+
+    if (state) {
+      push(state.referrer);
+    } else {
+      window.location = '/profile';
+    }
   };
 
   handleChange = ({ target }) => {
@@ -222,6 +231,8 @@ export class Signup extends Component {
 }
 
 Signup.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   signup: PropTypes.object.isRequired,
   signupAction: PropTypes.func.isRequired,
 };

@@ -1,0 +1,27 @@
+.Like,
+.Dislike {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .icon {
+    width: 30px;
+    margin-right: 7px;
+
+    img {
+      max-width: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .Like__count,
+  .Dislike__count {
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .disabled {
+    pointer-events: none;
+    cursor: not-allowed !important;
+  }
+}
